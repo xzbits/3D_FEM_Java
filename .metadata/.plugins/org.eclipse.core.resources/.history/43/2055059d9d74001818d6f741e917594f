@@ -1,0 +1,5 @@
+package oofem;
+
+public class Force {
+
+}

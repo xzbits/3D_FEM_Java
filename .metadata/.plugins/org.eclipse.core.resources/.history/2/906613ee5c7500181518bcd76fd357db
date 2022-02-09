@@ -1,0 +1,53 @@
+package oofem;
+
+import javax.vecmath.Vector3d;
+
+public class Node {
+	
+	double[] coordinates	= new double[3];
+	int[] dofNumbers 		= new int[3];
+	Constraint cons 		= new Constraint(true, true, true);
+	Force forces 			= new Force(0,0,0);
+	double[] displacement 	= new double[3];
+	
+	public Node(double x1, double x2, double x3) {
+		this.coordinates[0] = x1;
+		this.coordinates[1] = x2;
+		this.coordinates[2] = x3;
+	}
+	public void setConstraint(Constraint c) {
+		this.cons=c;
+	}
+	public Constraint getConstraint() {
+		return this.cons;
+	}
+	public void setForce(Force f) {
+		this.forces = f;
+	}
+	public Force getForce() {
+		return this.forces;
+	}
+	public int enumerateDOFs(int start) {
+		for(int i=0; i <= dofNumbers.length-1; i++) {
+			dofNumbers[i] = -1;
+		} else {
+			dofNumbers[i] = start++;
+			}
+		return 20;
+	}
+	public int getDOFNumbers() {
+		// must return int[3]
+		return 20;
+	}
+	public Vector3d getPosition() {
+		Vector3d v3 = new Vector3d(this.coordinates[0],this.coordinates[1],this.coordinates[2]);
+		return v3;
+	}
+	public void setDisplacement(double[] u) {
+		this.displacement = u;
+	}
+	public Vector3d getDisplacement() {
+		Vector3d v3dis = new Vector3d(this.displacement[0],this.displacement[1],this.displacement[2]);
+		return v3dis;
+	}
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="oofem.Constraint"/>
+<fullyQualifiedTypeName name="javax.vecmath.Vector3d"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="oofem.Structure"/>
+<fullyQualifiedTypeName name="iceb.jnumerics.lse.ILSESolver"/>
+<fullyQualifiedTypeName name="iceb.jnumerics.lse.GeneralMatrixLSESolver"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="inf.text.ArrayFormat"/>
+<fullyQualifiedTypeName name="oofem.Force"/>
+</qualifiedTypeNameHistroy>

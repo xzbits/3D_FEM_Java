@@ -1,0 +1,42 @@
+package oofem;
+
+import inf.v3d.obj.*;
+import inf.v3d.view.*;
+
+public class Visualizer {
+	private double displacementScale;
+	private double symbolScale;
+	private Structure struc;
+	private Viewer v;
+	
+	public Visualizer(Structure struc) {
+		this.struc = struc;
+	}
+	
+	public void drawElements() {
+		CylinderSet Elements = new CylinderSet();
+		for(int i = 0; i < this.struc.getNumberOfElements(); i++) {
+			Element e = this.struc.getElement(i);
+			Node n1 = e.getNode1();
+			Node n2 = e.getNode2();
+			double r = Math.sqrt(e.getArea()/ Math.PI);
+			
+			Elements.addCylinder(n1.getPosition().toArray(), n2.getPosition().toArray(), r);
+		}
+		v.addObject3D(Elements);
+	}
+	
+	public void drawConstraints() {
+		for(int i = 0; i < this.struc.getNumberOfNodes(); i++) {
+			Node n = this.struc.getNode(i)
+		}
+	}
+	
+	public void drawElementForces() {
+		
+	}
+	
+	public void drawDisplacements() {
+		
+	}
+}

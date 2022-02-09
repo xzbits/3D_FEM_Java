@@ -1,0 +1,11 @@
+package test;
+
+import oofem.Structure;
+import inf.text.ArrayFormat;
+import models.SmallTetraeder;
+
+public class EnumerateTest2 {
+	public static void main(String[] args) {
+		
+	}
+}

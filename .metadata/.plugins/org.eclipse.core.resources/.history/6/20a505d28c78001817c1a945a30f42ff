@@ -1,0 +1,32 @@
+package oofem;
+
+import inf.v3d.obj.*;
+import inf.v3d.view.*;
+
+public class Visualizer {
+	private double displacementScale;
+	private double symbolScale;
+	private Structure struc;
+	
+	public Visualizer(Structure struc) {
+		this.struc = struc;
+	}
+	
+	public void drawElements() {
+		CylinderSet setGeo = new CylinderSet();
+		for(int i = 0; i < this.struc.getNumberOfElements(); i++) {
+			Element e = this.struc.getElement(i);
+		}
+	}
+	
+	public void drawConstraints() {
+	}
+	
+	public void drawElementForces() {
+		
+	}
+	
+	public void drawDisplacements() {
+		
+	}
+}

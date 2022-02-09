@@ -1,0 +1,29 @@
+package oofem;
+
+public class Constraint {
+	private static boolean[] free = new boolean[3];
+	public Constraint (boolean u1, boolean u2, boolean u3) {
+		Constraint.free[1] = u1;
+		Constraint.free[2] = u2;
+		Constraint.free[3] = u3;
+	}
+	public boolean isFree(int c) {
+		return Constraint.free[c]==true;
+	}
+	public static void print() {
+				if(free[0]==true) {
+					System.out.println("free");}
+				else {
+					System.out.println("fixed");}
+				
+				if(free[1]==true) {
+					System.out.println("free");}
+				else {
+					System.out.println("fixed");}
+				
+				if(free[2]==true) {
+					System.out.println("free");}
+				else {
+					System.out.println("fixed");}
+				}
+}

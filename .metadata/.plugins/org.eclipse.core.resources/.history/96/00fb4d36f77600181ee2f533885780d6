@@ -1,0 +1,83 @@
+package oofem;
+
+import iceb.jnumerics.*;
+
+public class Element {
+	double area;
+	double eModulus;
+	int[] dofNumbers = new int[6];
+	private Node n1;
+	private Node n2;
+	
+	public Element(double e, double a, Node n1, Node n2) {
+		this.eModulus	= e;
+		this.area		= a;
+		this.n1 		= n1;
+		this.n2			= n2;
+	}
+	
+	public IMatrix computeStiffnessIMatrix() {
+		Vector3D V12 = this.getE1();
+		IMatrix dyaV12 = V12.dyadicProduct(V12);
+		for(int i = 0; i < dyaV12.getRowCount(); i++) {
+			for(int j = 0; j < dyaV12.getColumnCount(); j++) {
+			Ke.set(i, j, dyaV12.get(i, j) * (this.getArea() * this.getEModulus() / Math.pow(this.getLength(),3)));
+			}
+		}
+		return Ke;
+	}
+	
+	public void enumerateDOFs() {
+		Node node1 = this.getNode1();
+		Node node2 = this.getNode2();
+		for(int i = 0; i <= this.dofNumbers.length - 1; i++) {
+			if(i <= 2) {
+				this.dofNumbers[i] = node1.getDOFNumbers()[i];
+			} 
+			if(i > 2) {
+				this.dofNumbers[i] = node2.getDOFNumbers()[i - 3];
+			}
+		}
+	}
+	
+	public int[] getDOFNumbers() {
+		return this.dofNumbers;
+	}
+	
+	public double computeForce() {
+		return 20;
+	}
+	
+	public Vector3D getE1() {
+		Vector3D x1 = this.getNode1().getPosition();
+		Vector3D x2 = this.getNode2().getPosition();
+		Vector3D v12 = new Vector3D(
+				x1.getX()-x2.getX(), 
+				x1.getY()-x2.getY(), 
+				x1.getZ()-x2.getZ()
+				);
+		return v12;
+	}
+	
+	public double getLength() {
+		double length = this.getE1().length();
+				//Math.sqrt(Math.pow(this.getE1().getX(),2) + Math.pow(this.getE1().getY(),2) + Math.pow(this.getE1().getZ(),2));
+		return length;
+	}
+	
+	public Node getNode1() {
+		return n1;
+	}
+	
+	public Node getNode2() {
+		return n2;
+	}
+	
+	public double getArea() {
+		return area;
+	}
+	
+	public double getEModulus() {
+		return eModulus;
+	}
+}

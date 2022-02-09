@@ -1,0 +1,18 @@
+package oofem;
+
+public class Force {
+	private static double[] components = new double[3];
+	public Force(double r1, double r2, double r3) {
+		Force.components[0] = r1;
+		Force.components[1] = r2;
+		Force.components[2] = r3;
+	}
+	public double getComponent(int c) {
+		return Force.components[c];
+	}
+	public static void print() {
+		System.out.println(components[0]);
+		System.out.println(components[1]);
+		System.out.println(components[2]);
+	}
+}

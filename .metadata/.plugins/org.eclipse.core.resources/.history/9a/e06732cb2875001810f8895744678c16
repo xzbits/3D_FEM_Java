@@ -1,0 +1,17 @@
+package oofem;
+
+public class Constraint {
+	private boolean[] free = new boolean[3];
+	public Constraint (boolean u1, boolean u2, boolean u3) {
+		this.free[1]=u1;
+		this.free[2]=u2;
+		this.free[3]=u3;
+	}
+	public boolean isFree(int c) {
+		return this.free[c];
+	}
+	public void print() {
+		System.out.println("Component of load vector" + this.free[0] + "  " + 
+				this.free[1]+"  "+this.free[2]);
+	}
+}
